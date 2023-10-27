@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: "payload"
+      POSTGRES_USER: "postgres_user"
+      POSTGRES_PASSWORD: "postgres_pass"
+      POSTGRES_HOST: 5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5436:5432"
+
+  nats-streaming:
+    image: nats-streaming:latest
+    container_name: nats-streaming
+    restart: always
+    command: "--cluster_id NATS"
+    ports:
+      - "4222:4222"
+
+  app:
+    container_name: app
+    build:
+      context: ./
+      dockerfile: Dockerfile.app
+    restart: always
+    environment:
+      CONFIG_PATH: "./config/config.yaml"
+    volumes:
+      - ./config/config.yaml:/app/config.yaml
+      - ./cmd/app:/app/cmd/app
+    command: go run cmd/app/main.go
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - nats-streaming
+
+  publisher:
+    container_name: publisher
+    build:
+      context: ./
+      dockerfile: Dockerfile.pub
+    restart: always
+    environment:
+      CONFIG_PATH: "./config/pub_config.yaml"
+    volumes:
+      - ./config/pub_config.yaml:/app/pub_config.yaml
+      - ./cmd/publisher:/app/cmd/publisher
+    command: go run cmd/publisher/main.go
+    depends_on:
+      - nats-streaming

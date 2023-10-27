@@ -1,0 +1,7 @@
+
+nats_streaming:
+  host:           "nats://nats-streaming"
+  port:           4222
+  cluster_id:     "NATS"
+  client_id:      "publisher"
+  channel_name:   "channel"
