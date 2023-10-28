@@ -2,7 +2,7 @@ build:
 	docker-compose build 
 
 run:
-	docker-compose up -d --build
+	sudo docker-compose up --build
 
 stop:
 	docker-compose stop 

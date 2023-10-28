@@ -8,7 +8,7 @@
 
 <body>
   <div class="container">
-	<table>
+	<table border="1">
 		<caption>Детали заказа</caption>
 
 		<tbody>
@@ -23,6 +23,38 @@
 			<tr>
 				<td>Entry</td>
 				<td>{{.Entry}}</td>
+			</tr>
+			<tr>
+				<td>Locale</td>
+				<td>{{.Locale}}</td>
+			</tr>
+			<tr>
+				<td>Internal_signature</td>
+				<td>{{.InternalSignature}}</td>
+			</tr>
+			<tr>
+				<td>Customer_id</td>
+				<td>{{.CustomerID}}</td>
+			</tr>
+			<tr>
+				<td>Delivery_service</td>
+				<td>{{.DeliveryService}}</td>
+			</tr>
+			<tr>
+				<td>Shardkey</td>
+				<td>{{.Shardkey}}</td>
+			</tr>
+			<tr>
+				<td>Sm_id</td>
+				<td>{{.SmID}}</td>
+			</tr>
+			<tr>
+				<td>Date_created</td>
+				<td>{{.DateCreated}}</td>
+			</tr>
+			<tr>
+				<td>Oof_shard</td>
+				<td>{{.OofShard}}</td>
 			</tr>
 			<tr>
 				<td>Delivery</td>
@@ -142,38 +174,6 @@
 						{{end}}
 					</table>
 				</td>
-			</tr>
-			<tr>
-				<td>Locale</td>
-				<td>{{.Locale}}</td>
-			</tr>
-			<tr>
-				<td>Internal_signature</td>
-				<td>{{.InternalSignature}}</td>
-			</tr>
-			<tr>
-				<td>Customer_id</td>
-				<td>{{.CustomerID}}</td>
-			</tr>
-			<tr>
-				<td>Delivery_service</td>
-				<td>{{.DeliveryService}}</td>
-			</tr>
-			<tr>
-				<td>Shardkey</td>
-				<td>{{.Shardkey}}</td>
-			</tr>
-			<tr>
-				<td>Sm_id</td>
-				<td>{{.SmID}}</td>
-			</tr>
-			<tr>
-				<td>Date_created</td>
-				<td>{{.DateCreated}}</td>
-			</tr>
-			<tr>
-				<td>Oof_shard</td>
-				<td>{{.OofShard}}</td>
 			</tr>
 		</tbody>
 	</table>
